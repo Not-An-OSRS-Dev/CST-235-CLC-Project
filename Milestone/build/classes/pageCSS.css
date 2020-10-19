@@ -1,0 +1,16 @@
+@charset "ISO-8859-1";
+
+.headers
+{
+	background-color: Sky Blue;
+	font-weight: bold;
+	font-family: Impact;
+	font-style: Italic;
+	text-align: center;
+	font-size: 100px;
+}
+.body
+{
+	font-family: "Arial Black";
+	background-color: White;
+}
