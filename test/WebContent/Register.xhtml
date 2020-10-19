@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	
+	<style>
+		.registerBox
+		{
+			position:relative;
+			left:10%;	
+		}
+	</style>
+	
+<h:head>
+	<title>Registration Page</title>
+</h:head>
+
+<body>
+	<center>
+		<h:form>
+			First Name: <h:inputText name="fname" value="#{user.firstName}" title="" class="registerBox"/><br/>
+			Last Name: <h:inputText value="#{user.lastName}" title="" class="registerBox"/><br/>
+			Email: <h:inputText value="#{user.email}" title="" class="registerBox"/><br/>
+			Phone #: <h:inputText value="#{user.phoneNum}" title="" class="registerBox"/><br/>
+			Address: <h:inputText value="#{user.address}" title="" class="registerBox"/><br/>
+			Username: <h:inputText value="#{user.username}" title="" class="registerBox"/><br/>
+			Password <h:inputText value="#{user.password}" title="" class="registerBox"/><br/>
+			<h:commandButton action="#{controller.onSubmit(fname)}" value="Create Profile"/><br/>
+		</h:form>
+		<h:messages/>
+	</center>
+</body>
+</html>

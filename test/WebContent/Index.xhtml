@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+	
+	<!-- <h:title> Coastal Sweets </h:title> -->
+	
+	  <div id="content">
+      		<ui:include src="templates/Template.xhtml"/>
+      </div>
+	
+	<body>
+	<a href="login.xhtml">Login</a>
+	<a href="Register.xhtml">register</a>
+	<a href="about.xhtml">About Us</a>
+	
+	<h1> Coastal Sweets </h1>
+	<h:form>
+		Enter your username <h:inputText value="#{Test.test}" title="" /><br/>
+		Enter your password <h:inputText value="#{Test.test}" title="" /><br/>
+		<h:commandButton action="#{controller.onSubmit}" type="submit" value="Submit"/>
+		<h:commandButton action="#{formController.onSubmit}" value="Submit" />
+	</h:form>
+	
+	<!-- Need validators for the field properties -->
+	
+	<!-- Components for the index page
+	Login and Registration. initial navigation concepts, such as a  menu bar, to access the applications core functionality, such as Login and Register.
+	 well defined styles, fonts, colors, and overall application theme implemented that will be used for the remaining milestone deliverables.
+	 Create a CSS format to be used in each page
+	 
+	 The application should leverage Facelets to support reusable page components (i.e., headers, footers, menu bars, etc.) and for Page Layouts.e.
+	 The application should have a Title (and possible a Logo)
+	 -->
+	
+	 </body>
+	
+</html>

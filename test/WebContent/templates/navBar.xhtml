@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<style>
+body
+{
+    margin:0px;
+}
+.nav 
+{
+    position: relative;
+    overflow: hidden;
+    background-color: LimeGreen;
+}
+.nav a 
+{
+    float: left;
+    color: Black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 16px;
+}
+.nav a:hover
+{
+    background: Black;
+    color: LimeGreen;
+}
+.nav a.active
+{
+    background: White;
+    color: LimeGreen;
+}
+.nav-centered a
+{
+    float: left;
+    position: relative;
+    top: 50%;
+    left: 36%;
+    transform: translate (50%, -50%);
+}
+.container 
+{
+    position: relative;
+    text-align: center;
+    color: white;
+    margin: -50px;
+}
+.imgtxt
+{
+    position: relative;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -225%);
+    font-size: 40px;
+    font-family: Copperplate;
+    color: White;
+}
+
+</style>
+<body>
+
+<!-- <div class="container">
+<img src="bigs.jpg" alt="Big Beach" style= "width:100%;">
+<div class="imgtxt"> Arin's Webpage </div>
+</div> -->
+<nav class="nav">
+    <cent class ="nav-centered">
+    <a class="active" href="home.php"> Home </a>
+    <a href="blog.html"> Blog </a>
+    <a href="viewBlogs.php"> All Blogs </a>
+    <a href="blogSearch.php"> Search Blogs </a>
+    <a href ="logoffHandler.php"> Logoff </a>
+    </cent>
+</nav>
+</body>
+</html>
