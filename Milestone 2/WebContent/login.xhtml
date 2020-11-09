@@ -7,8 +7,8 @@
 	
 	<h:body>
 		<h:form>
-			Username: <h:inputText value="#{userValidate.username}" id="username"/><br/>
-			Password: <h:inputText value="#{userValidate.password}"/><br/>
+			Username: <h:inputText value="#{controller.user.username}" id="username"/><br/>
+			Password: <h:inputText value="#{controller.user.password}"/><br/>
 			<h:commandButton value="Submit" action="#{controller.onLogin()}"/><br/>
 		</h:form>
 	<!--	<h:message for="username"/>

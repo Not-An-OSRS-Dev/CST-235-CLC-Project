@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	
+
+	
+<h:head>
+	<title>New Product Page</title>
+</h:head>
+
+<body>
+	<center>
+		<h:form>
+			Product Name: <h:inputText name="prodName" value="#{product.prodName}" title="" class="registerBox"/><br/>
+			Product Description: <h:inputText value="#{product.desc}" title="" class="registerBox"/><br/>
+			Price: <h:inputText value="#{product.price}" title="" class="registerBox"/><br/>
+			Stock: <h:inputText value="#{product.stock}" title="" class="registerBox"/><br/>
+			Photo: <h:inputText value="#{product.photo}" title="" class="registerBox"/><br/>
+			<!-- REFACTOR --><h:commandButton action="#{controller.onProductAdd()}" value="Create Product"/><br/>
+		</h:form>
+		<h:messages/>
+	</center>
+</body>
+</html>

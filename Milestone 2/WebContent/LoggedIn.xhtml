@@ -5,6 +5,8 @@
       xmlns:h="http://java.sun.com/jsf/html">
 
 	<body>
-		<p> #{user.firstName}, You have been logged in </p>
+		<p> #{controller.user.firstName}, You have been logged in </p> <br/>
+		
+		Click here to add a product<h:button outcome="newProduct.xhtml"></h:button>
 	</body>
 </html>

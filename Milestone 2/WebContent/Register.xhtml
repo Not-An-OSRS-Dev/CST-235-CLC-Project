@@ -19,13 +19,13 @@
 <body>
 	<center>
 		<h:form>
-			First Name: <h:inputText value="#{user.firstName}" title="" class="registerBox"/><br/>
-			Last Name: <h:inputText value="#{user.lastName}" title="" class="registerBox"/><br/>
-			Email: <h:inputText value="#{user.email}" title="" class="registerBox"/><br/>
-			Phone #: <h:inputText value="#{user.phoneNum}" title="" class="registerBox"/><br/>
-			Address: <h:inputText value="#{user.address}" title="" class="registerBox"/><br/>
-			Username: <h:inputText value="#{user.username}" title="" class="registerBox"/><br/>
-			Password <h:inputText value="#{user.password}" title="" class="registerBox"/><br/>
+			First Name: <h:inputText value="#{controller.user.firstName}" title="" class="registerBox"/><br/>
+			Last Name: <h:inputText value="#{controller.user.lastName}" title="" class="registerBox"/><br/>
+			Email: <h:inputText value="#{controller.user.email}" title="" class="registerBox"/><br/>
+			Phone #: <h:inputText value="#{controller.user.phoneNum}" title="" class="registerBox"/><br/>
+			Address: <h:inputText value="#{controller.user.address}" title="" class="registerBox"/><br/>
+			Username: <h:inputText value="#{controller.user.username}" title="" class="registerBox"/><br/>
+			Password <h:inputText value="#{controller.user.password}" title="" class="registerBox"/><br/>
 			<h:commandButton action="#{controller.onSubmit()}" value="Create Profile"/><br/>
 		</h:form>
 		<h:messages/>

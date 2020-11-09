@@ -1,13 +1,18 @@
+/*
+ * Class to read and write users to and from a file
+ * Creator: Thomas
+ */
+
 package database;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 //import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 //import java.util.List;
 import java.util.Scanner;
-
 import beans.User;
 //import com.fasterxml.jackson.core.JsonProcessingException;
 //import com.fasterxml.jackson.databind.JsonMappingException;
@@ -16,112 +21,111 @@ import beans.User;
 
 public class FileAccess 
 {
-	private String filename;
+	//The address of the file, this is not a relative address, so it will only work for me unless changed
+	private static String filename = "C:\\Users\\tlbie\\EE Eclipse Workspace\\Milestone 2\\users.txt";
 	
-	public FileAccess(String filename)
-	{
-		this.filename = filename;
-	}
-	
-	public void writeUserToFile(User user) throws IOException
-	{	
-		System.out.println("Adding Users to file");
-		FileWriter writer = new FileWriter(new File(this.filename), true);
+	//method to append a user to the file
+	public static void writeUserToFile(User user) throws IOException {
+		//Test print statement
+		//System.out.println("Adding Users to file");
 		
-		String userString = (user.getFirstName() + "|" + user.getLastName() + "|" 
-				+ user.getEmail() + "|" + user.getPhoneNum() + "|"
-				+ user.getAddress() + "|" + user.getUsername() + "|" 
-				+ user.getPassword() + "\n");
+		//Create a fileWriter, with the append option set to true
+		FileWriter writer = new FileWriter(new File(FileAccess.filename), true);
 		
-		System.out.println(userString);
+		//Use the pipe character as a delimeter for each of the user objects fields
+		String userString = (user.getFirstName() + "|" + user.getLastName() + "|" + user.getEmail() + "|"
+				+ user.getPhoneNum() + "|" + user.getAddress() + "|" + user.getUsername() + "|" + user.getPassword()
+				+ "\n");
 		
+		//Test print
+		//System.out.println(userString);
+
+		//Write the user string to the file
 		writer.write(userString);
-		
+
+		//Close the writer
 		writer.close();
-		
-		this.readUsersFromFile();
-		
-		
-//		ObjectMapper map = new ObjectMapper();
-//		
-//		map.writeValue(new File(this.filename), user);
 	}
 	
-	public ArrayList<User> readUsersFromFile() throws IOException
+	//Method to read all the users from the file
+	public static ArrayList<User> readUsersFromFile() throws FileNotFoundException
 	{
-		Scanner scan = new Scanner(new File(this.filename));
-		
+		//Create a scanner object
+		Scanner scan = new Scanner(new File(FileAccess.filename));
+
+		//Create a list of strings and a list of users
 		ArrayList<String> lines = new ArrayList<String>();
-		
-		while (scan.hasNextLine())
-		{
+		ArrayList<User> users = new ArrayList<User>();
+
+		//For each line in the file, add it to the list
+		while (scan.hasNextLine()) {
 			lines.add(scan.nextLine());
 		}
 		
-//		ObjectMapper map = new ObjectMapper();
-		ArrayList<User> users = new ArrayList<User>();
-		System.out.println("Printing lines:" + lines);
-		for (String line : lines)
-		{
-//			System.out.println("line is " + line);
-//			String[] properties = line.split("|", -1);
-//			System.out.println("there are " + properties. + " properties");
-//			System.out.println("68" + properties[1]);
-//			System.out.println("The first name is: " + properties[0]);
-			String[] properties = this.split(line,"|");
-//			for (String property:properties)
-//			{
-//				System.out.print(property + "\t");
-//			}
-			User user = new User(properties[0], properties[1], properties[2], properties[3], properties[4], properties[5], properties[6]);
-			//System.out.println("first name is: " + user.getFirstName());
+		//Test print statement
+		//System.out.println("Printing lines:" + lines);
+		
+		//For each line of the file, run the split method
+		for (String line : lines) {
+			String[] properties = FileAccess.split(line, "|");
 			
+			//Create a new user object with each of the specified properties
+			User user = new User(properties[0], properties[1], properties[2], properties[3], properties[4], 
+					properties[5], properties[6]);
+
+			//Add the user to the list of users
 			users.add(user);
 		}
-		
+
+		//Close the file scanner
 		scan.close();
-//		FileReader read = new FileReader(filename);
-//		while(read.read()!=-1)
-//			{
-//				while ((char)read.read()!='\n')
-//				{
-//					String line = "";
-//					line = line + (char)read.read();
-//					lines.add(line);
-//				}	
-//			}
-//		System.out.println(lines);
-//		read.close();
-		
+
+		//Return the list of users
 		return users;
 	}
 	
-	private String[] split(String s, String pattern) throws IOException
+	//For some reason the split method wasn't working, so I had to make my own
+	private static String[] split(String s, String pattern) 
 	{
-		System.out.println("running split");
+		//System.out.println("running split");
+		
+		//Variables to save the property number being found 
+		//and the number of times the pipe character has been found
 		int numOccurances = 0;
 		int ind=0;
+		
+		//While the next instance of the pipe character can be found
 		while (ind!=-1)
 		{
-			//System.out.println("106 Index is: " + ind);
+			//Increment the number of occurrences
 			numOccurances++;
+			
+			//Reset the index to the next instance of the pipe character
 			ind = s.indexOf(pattern, ind+1);
-			//System.out.println("109 Index is: " + ind);
 		}
+		
+		//Create the next property
 		String[] items = new String[numOccurances];
+		
+		//Reset the index value to 0
 		ind = 0;
-		//System.out.println("113 Index is: " + ind);
+		
+		//for each time the pipe character is found
 		for (int i = 0; i < numOccurances; i++)
 		{
+			//Find the next index of the pipe character
 			int lastField = s.indexOf(pattern, ind+1);
+			
+			//If there is none, it is the last field, so use the substring command
 			if (lastField==-1) items[i] = s.substring(ind);
+			
+			//If there is at least one more pipe character, run the substring command cut off at the value of ind+1
 			else items[i] = s.substring(ind, s.indexOf(pattern, ind+1));
-			//System.out.print(i + ": " + items[i] + "\t");
-			//System.out.println("118 Index is: " + ind);
+			//increment the ind value
 			ind = s.indexOf(pattern, ind)+1;
-			//System.out.println("120 Index is: " + ind);
 		}
-		//System.out.println();
+		
+		//Return the split string
 		return items;
 	}
 	
